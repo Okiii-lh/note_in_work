@@ -2,7 +2,7 @@
   numpy使用笔记
   </h1></center>
 
-### 随机数
+### 1、随机数
 
 #### np.random.rand(n, m)
 
@@ -28,13 +28,31 @@ replace：表示能否取相同的数字
 
 p：与数组a对应，表示数组a中各个元素的选取概率，默认为每个元素的选取概率相同
 
-### 数组操作
+### 2、数组操作
 
 #### 数组合并
 
 水平合并
 
+### 3、numpy与array互相转换
 
+#### array转换为numpy
+
+```python
+test = [1, 2, 3, 4]
+
+print(np.array(test))
+```
+
+
+
+#### numpy 转换为array
+
+```python
+test = np.ones(5)
+
+print(test.tolist())
+```
 
 
 
