@@ -180,11 +180,62 @@ out = torch.Tensor(out)
 
 ### 12、Can't call numpy() on Tensor that requires grad. Use tensor.detach().numpy() instead.
 
-出现这个现象的原因是：待转换类型的PyTorch Tensor变量带有梯度，直接将其转换为numpy数据将破坏计算图，因此numpy拒绝进行数据转换，实际上这是对开发者的一种提醒。如果自己在转换数据时不需要保留梯度信息，可以在变量转换之前添加detach()调用。	
+出现这个现象的原因是：待转换类型的PyTorch Tensor变量带有梯度，直接将其转换为numpy数据将破坏计算图，因此numpy拒绝进行数据转换，实际上这是对开发者的一种提醒。如果自己在转换数据时不需要保留梯度信息，可以在变量转换之前添加detach()调用。
 
 将weight_diff_return有Tensor转换为numpy类型
 
 ```python
 weight_diff_return.detach().numpy()
+```
+
+### 13、AttributeError: ‘list’ object has no attribute “dim”
+
+该问题出现在将数组传入到神经网络的过程中
+
+主要原因是不能直接将数组作为输入输入到神经网络中，要将数组转换成tensor对象
+
+```python
+def forward(self, x):
+    """
+    前向传播
+    :param x: 输入
+    :return: 动作
+    """
+    # 进行转换
+    x = torch.from_numpy(np.array(x))
+    x = torch.tensor(x, dtype=torch.float32)
+    out = self.fc1(x)
+    out = self.relu(out)
+    out = self.fc3(out)
+
+    return out
+```
+
+### 14、RuntimeError: Expected object of scalar type Double but got scalar type Float for argument #2 'mat2'
+
+#### 翻译
+
+RuntimeError:预期对象为标量类型Double，但参数#2 'mat2'的标量类型为Float
+
+#### 解决方法
+
+在代码前添加一行，将输入的数据转成是dtype=torch.float32的。
+
+```python
+def forward(self, x):
+    """
+    前向传播
+    :param x: 输入
+    :return: 动作
+    """
+    x = torch.from_numpy(np.array(x))
+    # 转换成torch.float32
+    x = torch.tensor(x, dtype=torch.float32)
+    print(x)
+    out = self.fc1(x)
+    out = self.relu(out)
+    out = self.fc3(out)
+
+    return out
 ```
 
