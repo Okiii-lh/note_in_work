@@ -89,3 +89,31 @@ for epoch in range(num_epochs):
                   (epoch+1, num_epochs, i+1, len(train_dataset)/batch_size, loss.item()))
 ```
 
+### 4、torch.max()
+
+torch.max(input, dim) 
+
+输入
+
+- Input是softmax函数输出的一个tensor
+- dim是max函数索引的维度0/1，0是每列的最大值，1是每行的最大值
+
+输出
+
+- 函数会返回两个tensor，第一个tensor是每行/每列的最大值；第二个tensor是每行、每列最大值的索引。
+
+
+
+### 5、梯度下降
+
+pytorch实现梯度下降有两种方法
+
+1. torch.autograd.grad(loss, [w1,w2,...])
+
+   第一个参数为损失函数，第二个参数是loss的变量
+
+   返回值是一个包含每个变量的偏导的list，[w1.grad,w2.grad,…]
+
+2. loss.backward()
+
+   直接用loss调用backword函数，但是这样不会直接返回梯度信息，而是附在每个要求梯度的变量上，可以通过w.grad查看变量的偏导。

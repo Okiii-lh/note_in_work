@@ -168,3 +168,23 @@ out = np.append([1, 0], np.append(state, state_))
 out = torch.Tensor(out)
 ```
 
+
+
+### 11、unsupported operand type(s) for +: 'numpy.ndarray' and 'Tensor'
+
+忘记怎么解决的了
+
+参考文献：https://stackoverflow.com/questions/27841916/unsupported-operand-types-for-numpy-ndarray-and-str
+
+
+
+### 12、Can't call numpy() on Tensor that requires grad. Use tensor.detach().numpy() instead.
+
+出现这个现象的原因是：待转换类型的PyTorch Tensor变量带有梯度，直接将其转换为numpy数据将破坏计算图，因此numpy拒绝进行数据转换，实际上这是对开发者的一种提醒。如果自己在转换数据时不需要保留梯度信息，可以在变量转换之前添加detach()调用。	
+
+将weight_diff_return有Tensor转换为numpy类型
+
+```python
+weight_diff_return.detach().numpy()
+```
+
