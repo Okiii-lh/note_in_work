@@ -117,3 +117,11 @@ pytorch实现梯度下降有两种方法
 2. loss.backward()
 
    直接用loss调用backword函数，但是这样不会直接返回梯度信息，而是附在每个要求梯度的变量上，可以通过w.grad查看变量的偏导。
+
+
+
+### 6、tensor转int
+
+直接在tensor变量的后面加.item()，就能把tensor类型转换成int类型
+
+并不知道为啥
