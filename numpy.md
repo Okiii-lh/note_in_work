@@ -56,3 +56,22 @@ print(test.tolist())
 
 
 
+### 4、np.linspac
+
+np.linspac()用来创建一个等差数列
+
+numpy.linspace(start, stop, num=50, endpoint=True, retstep=False, dtype=None, axis=0)
+
+#### 参数含义：
+
+start：样本数据开始点
+
+stop：样本数据结束点
+
+num=50：生成的样本数量，默认为50
+
+endpoint：生成的数列是否包含stop
+
+retstep：是否给出数据间隔
+
+dtype：数据类型
