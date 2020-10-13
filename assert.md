@@ -24,3 +24,4 @@ Traceback (most recent call last):
 AssertionError: 该程序只能在linux下运行
 ```
 
+断言
