@@ -12,3 +12,10 @@ sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf
 /etc/init.d/mysql restart
 ```
 
+#### 第一次安装没设置密码无法登陆解决办法
+
+```bash
+sudo cat /etc/mysql/debian.cnf
+```
+
+查看文件中的用户名和密码，使用配置文件中的用户名和密码进行登录，登录进入数据库之后再创建用户名和密码
