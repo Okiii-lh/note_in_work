@@ -49,3 +49,4 @@
    查看OpenSSH-Server-In-TCP的enable是否为True
 
 4. 配置完成之后其他客户端可使用ssh连接windows，用户名和密码就是windows的用户名和密码
+
